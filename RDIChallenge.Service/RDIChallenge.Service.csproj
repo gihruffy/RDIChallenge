@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation.AspNetCore" Version="9.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Services\ValidateTokenUseCases\Flow\" />
+    <Folder Include="Services\ValidateTokenUseCases\UseCase\" />
+    <Folder Include="Validators\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RDIChallenge.Domain\RDIChallenge.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
