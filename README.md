@@ -31,19 +31,14 @@ dotnet test
 ```
 ## Built With
 
-* [.Net Core Frameworl](https://dotnet.microsoft.com/download/dotnet-core) - Free, cross-platform, open-source framework;
+* [.Net Core Framework](https://dotnet.microsoft.com/download/dotnet-core) - Free, cross-platform, open-source framework;
 * [xUnit](https://xunit.net) - Tests
 * [Clean Arch](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) - Clean Architeture concepts
 ## Contributings
 
 ## Authors
 
-* **Giovanni Martinelli** - *Initial work* - [PurpleBooth](https://github.com/gihruffy/)
+* **Giovanni Martinelli** - *Initial work* - [GihRuffy](https://github.com/gihruffy/)
 
 See also the list of [contributors](https://github.com/gihruffy/RDIChallenge/contributors) who participated in this project.
 
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
