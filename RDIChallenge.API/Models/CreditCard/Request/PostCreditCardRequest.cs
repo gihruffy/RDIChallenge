@@ -27,7 +27,8 @@ namespace RDIChallenge.API.Models.CreditCard.Request
                 .NotNull().WithMessage("CardNumber must not be Null");
 
             RuleFor(e => e.CardNumber.ToString())
-                  .MaximumLength(16).WithMessage("CardNumber must be at max 16 characters lenght");
+                  .MaximumLength(16).WithMessage("CardNumber must be a maximum of 16 digits")
+                  .MinimumLength(4).WithMessage("CardNumber must be at least 4 numbers");
 
             RuleFor(e => e.CVV)
                     .NotEmpty().WithMessage("CVV must not be Empty")

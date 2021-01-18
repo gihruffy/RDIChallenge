@@ -2,6 +2,7 @@
 using RDIChallenge.Domain.Interfaces.Services.CreditCardTokenUseCases.Flow;
 using RDIChallenge.Domain.Interfaces.Services.CreditCardTokenUseCases.UseCase;
 using RDIChallenge.Domain.Interfaces.Services.CreditCardUseCases.UseCase;
+using RDIChallenge.Service.Services.CreditCardTokenUseCases.UseCase;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,7 +13,7 @@ namespace RDIChallenge.Service.Services.CreditCardTokenUseCases.Flow
     public class ValidateCreditCardTokenFlow : IValidateCreditCardTokenFlow
     {
         IGetFindCreditCardUseCase _getFindCreditCardUseCase;
-        ICreateCreditCardTokenUseCase _createCreditCardTokenUseCase;
+        Domain.Interfaces.Services.CreditCardTokenUseCases.UseCase.ICreateCreditCardTokenUseCase _createCreditCardTokenUseCase;
         public ValidateCreditCardTokenFlow(
             IGetFindCreditCardUseCase getFindCreditCardUseCase, 
             ICreateCreditCardTokenUseCase createCreditCardTokenUseCase )
@@ -22,19 +23,29 @@ namespace RDIChallenge.Service.Services.CreditCardTokenUseCases.Flow
         }
         public async Task<bool> Execute(ValidateToken validateToken)
         {
-            bool isValid = false;
-            CreditCard findCard = await _getFindCreditCardUseCase.Execute(validateToken.CardId);
-            if(findCard != null && ValidateTokenDate(findCard.RegistrationDate))
-            {
-                if(CardBelongsToCostumer(findCard, validateToken))
-                {
-                    Console.WriteLine(findCard.CardNumber);
-                    long newToken = await _createCreditCardTokenUseCase.Execute(findCard.CardNumber, validateToken.CVV);
-                    isValid = IsTokenEquals(validateToken.Token, newToken);
-                }
-            }
 
-            return isValid;            
+            try
+            {
+                bool isValid = false;
+                CreditCard findCard = await _getFindCreditCardUseCase.Execute(validateToken.CardId);
+                if (findCard != null && ValidateTokenDate(findCard.RegistrationDate))
+                {
+                    if (CardBelongsToCostumer(findCard, validateToken))
+                    {
+                        Console.WriteLine(findCard.CardNumber);
+                        long newToken = await _createCreditCardTokenUseCase.Execute(findCard.CardNumber, validateToken.CVV);
+                        isValid = IsTokenEquals(validateToken.Token, newToken);
+                    }
+                }
+
+                return isValid;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+                    
         }
 
         private bool IsTokenEquals(long oldToken, long newToken) => oldToken == newToken;

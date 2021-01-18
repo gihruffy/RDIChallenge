@@ -11,6 +11,7 @@ using RDIChallenge.Respository.Database.Context;
 using Microsoft.EntityFrameworkCore;
 using RDIChallenge.Domain.Interfaces.Services;
 using RDIChallenge.Respository.Database.Transacions;
+using RDIChallenge.API.Middleware;
 
 namespace RDIChallenge.API
 {
@@ -79,6 +80,8 @@ namespace RDIChallenge.API
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseMiddleware<CustomExceptionMiddleware>();
 
             app.UseMvc();
 
