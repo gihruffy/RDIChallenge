@@ -8,6 +8,6 @@ namespace RDIChallenge.Domain.Interfaces.Services.CreditCardTokenUseCases.UseCas
 {
     public interface ICreateCreditCardTokenUseCase
     {
-        Task<long> Execute(CreditCard card);
+        Task<long> Execute(long cardNumber, int cvv);
     }
 }

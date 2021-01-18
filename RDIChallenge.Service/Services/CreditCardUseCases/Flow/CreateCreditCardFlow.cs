@@ -28,7 +28,7 @@ namespace RDIChallenge.Service.Services.CreditCardUseCases.Flow
 
         public async Task<CreditCard> Execute(CreditCard card)
         {
-            long token = await _creteCreditCardTokenUseCase.Execute(card);
+            long token = await _creteCreditCardTokenUseCase.Execute(card.CardNumber, card.CVV);
             card.SetToken(token);
             return await _createCreditCardUseCase.Execute(card);
         }

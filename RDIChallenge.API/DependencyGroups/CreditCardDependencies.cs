@@ -17,7 +17,8 @@ namespace RDIChallenge.API.DependencyGroups
             services.AddScoped<ICreditCardRepository, CreditCardRepository>();
             services.AddScoped<ICreateCreditCardUseCase, CreateCreditCardUseCase>();
             services.AddScoped<ICreateCreditCardFlow, CreateCreditCardFlow>();
-            
+            services.AddScoped<IGetFindCreditCardUseCase, GetFindCreditCardUseCase>();
+
         }
 
     }

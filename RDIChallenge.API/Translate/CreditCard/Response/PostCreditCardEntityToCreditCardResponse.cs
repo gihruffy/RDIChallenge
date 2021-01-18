@@ -11,7 +11,7 @@ namespace RDIChallenge.API.Translate.CreditCard.Response
         public static PostCreditCardResponse Translate(Domain.Entities.CreditCard entity) =>
             entity != null ?
             PostCreditCardResponse.Create(
-                cardId: entity.CardId,
+                cardId: entity.Id,
                 registrationDate: entity.RegistrationDate,
                 token: entity.Token
             ) : PostCreditCardResponse.Create();

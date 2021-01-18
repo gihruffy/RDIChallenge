@@ -23,12 +23,14 @@ namespace RDIChallenge.API.Controllers
         {
             _validateCreditCardTokenFlow = validateCreditCardTokenFlow;
         }
+
+
         [HttpPost("rdichallenge/v1/validateToken")]
         [Consumes("application/json")]
         [ProducesResponseType(typeof(PostValidateTokenResponse), StatusCodes.Status200OK)]
-        [SwaggerOperation(operationId: "CreditCard_GET_Find")]
+        [SwaggerOperation(operationId: "CreditCard_validate_token")]
 
-        public async Task<ActionResult> ValidateToken([FromBody] PostValidateTokenRequest model)
+        public async Task<ActionResult> ValidateToken([FromQuery] PostValidateTokenRequest model)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);

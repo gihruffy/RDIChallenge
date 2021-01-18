@@ -39,7 +39,7 @@ namespace RDIChallenge.API.Controllers
         [HttpPost("rdichallenge/v1/creditcard")]
         [Consumes("application/json")]
         [ProducesResponseType(typeof(List<GetCreditCardRequest>), StatusCodes.Status200OK)]
-        [SwaggerOperation(operationId: "CreditCard_GET_Find")]
+        [SwaggerOperation(operationId: "CreditCard_POST")]
         public async Task<ActionResult> Post([FromQuery] PostCreditCardRequest model)
         {
             var response = await _createCreditCardFlow.Execute(PostCreditCardRequestToCreditCardEntity.Translate(model));

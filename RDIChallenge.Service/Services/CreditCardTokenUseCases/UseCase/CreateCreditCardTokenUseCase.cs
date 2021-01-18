@@ -10,13 +10,13 @@ namespace RDIChallenge.Service.Services.CreditCardTokenUseCases.UseCase
 {
     public class CreateCreditCardTokenUseCase : ICreateCreditCardTokenUseCase
     {
-        public async Task<long> Execute(CreditCard card)
+        public async Task<long> Execute(long cardNumber, int cvv)
         {
-            string fullCardNumber = card.CardNumber.ToString();
+            string fullCardNumber = cardNumber.ToString();
             string lastFourDigitsCardNumber = fullCardNumber.Substring(fullCardNumber.Length - 4);
-            int[] tokenArray = lastFourDigitsCardNumber.Select(s => Convert.ToInt32(s)).ToArray();
+            int[] tokenArray = lastFourDigitsCardNumber.Select(s => int.Parse(s.ToString())).ToArray();
             
-            for (int i = 0; i < card.CVV.ToString().Length; i++)
+            for (int i = 0; i < cvv; i++)
             {
                 tokenArray = RightCircularRotation(tokenArray);
             }

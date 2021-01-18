@@ -6,13 +6,13 @@ namespace RDIChallenge.Domain.Entities
 {
     public class CreditCard: EntityBase
     {
-        public int CardId { get; private set; }
         public int CostumerId { get; private set; }
         public long CardNumber { get; private set; }
         public int CVV { get; private set; }
         public DateTime RegistrationDate { get; private set; }
         public long Token { get; private set; }
-        public static CreditCard Create(int costumerID,
+        public static CreditCard Create(
+                                        int costumerID,
                                         long cardNumber,
                                         int cvv) => new CreditCard
                                         {

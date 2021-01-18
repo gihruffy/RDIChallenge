@@ -9,5 +9,7 @@ namespace RDIChallenge.Domain.Interfaces.Repository
     public interface ICreditCardRepository
     {
         CreditCard Save(CreditCard card);
+
+        Task<CreditCard> FindById(int Id);
     }
 }

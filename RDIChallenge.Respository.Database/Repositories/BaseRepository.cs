@@ -3,6 +3,7 @@ using RDIChallenge.Domain.Entities;
 using RDIChallenge.Domain.Interfaces.Repository;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace RDIChallenge.Respository.Database.Repositories
@@ -32,6 +33,11 @@ namespace RDIChallenge.Respository.Database.Repositories
                 DbSet.Update(entity);
 
             return entity;
+        }
+
+        public virtual IQueryable<T> NoTracking()
+        {
+            return DbSet.AsNoTracking();
         }
     }
 }
